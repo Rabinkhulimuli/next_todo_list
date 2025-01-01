@@ -7,7 +7,6 @@ export const todoRouter = createTRPCRouter({
 
   all: publicProcedure.query(async ({ ctx }) => {
     const todos=await ctx.prisma.todo.findMany();
-    
     return todos
   }),
 
@@ -60,4 +59,14 @@ export const todoRouter = createTRPCRouter({
       throw new Error("Error toggling todo status");
     }
   }),
+  update:publicProcedure.input(z.object({content:z.string().min(1),id:z.number()})).mutation(async({ctx,input})=> {
+    const updateTodo= await ctx.prisma.todo.update({
+      where:{
+        id:input.id
+      },
+      data:{
+        content:input.content
+      }
+    })
+  })
 });

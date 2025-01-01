@@ -10,7 +10,6 @@ export default  function Todos() {
   if (!data ) {
     return <div>Create your first todo</div>;
   } 
-  console.log(data)
   return (
     <>
       {data.map((todo: TodoType) => (
