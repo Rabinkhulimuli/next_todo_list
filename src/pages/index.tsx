@@ -1,6 +1,5 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import { CreateTodo } from "../component/createTodo";
 import Todos from "../component/todos";
 import { api } from "../utils/api";

@@ -7,12 +7,10 @@ import { api } from "../utils/api";
 export function CreateTodo() {
    const trpc= api.useUtils()
     const [newTodo,setNewTodo]= useState('')
-    const {mutate,isSuccess}=api.todo.create.useMutation({
+    const {mutate}=api.todo.create.useMutation({
       onSettled:async()=> await trpc.todo.all.invalidate()
     })
-    if (isSuccess){
-       
-    }
+   
   return (
     <>
       <form
